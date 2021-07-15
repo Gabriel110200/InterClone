@@ -1,0 +1,5 @@
+
+window[window["TiktokAnalyticsObject"]].instance("C2V72T8HEMJVRV99LF7G").setAdvancedMatchingAvailableProperties({"email":false,"phone_number":false});
+window[window["TiktokAnalyticsObject"]].instance("C2V72T8HEMJVRV99LF7G").setPixelInfo && window[window["TiktokAnalyticsObject"]].instance("C2V72T8HEMJVRV99LF7G").setPixelInfo({status: 0, name: "Banco Inter", advertiserID: "6968895270826344450", setupMode: 1, partner: ""});
+window[window["TiktokAnalyticsObject"]].setPCMDomain && window[window["TiktokAnalyticsObject"]].setPCMDomain("bancointer.com.br");
+window[window["TiktokAnalyticsObject"]].setPCMConfig && window[window["TiktokAnalyticsObject"]].setPCMConfig([]);
