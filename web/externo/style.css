@@ -1,0 +1,51 @@
+html,
+body {
+	background-color: #f2f2f2;
+	height: 100vh;
+}
+
+.row + .row {
+	margin-top: 2rem;
+}
+
+.dashboard {
+	height: 100%;
+	display: flex;
+}
+
+.dashboard-container {
+	margin: auto;
+	max-width: 1000px;
+}
+
+.dashboard-container h1 {
+	text-align: left;
+	margin-bottom: 1rem;
+	font-size: 3rem;
+}
+
+.buttons-container {
+	background-color: #dedee7;
+	padding: 2rem;
+	border-radius: 0.8rem;
+}
+
+.dashboard-button {
+	width: 100%;
+	background-color: #bb6bd9;
+	max-height: 150px;
+	min-height: 100px;
+	min-width: 100px;
+	border: none;
+	border-radius: 0.8rem;
+	padding: 0.5rem;
+
+	text-align: center;
+	font-size: 1.5rem;
+	color: white;
+}
+
+.dashboard-button:hover {
+	cursor: pointer !important;
+	background-color: #a55cc0;
+}
