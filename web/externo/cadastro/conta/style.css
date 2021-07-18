@@ -1,0 +1,60 @@
+html,
+body {
+	background-color: #f2f2f2;
+	height: 100%;
+}
+
+.form-container {
+	height: 100%;
+	display: flex;
+}
+
+.main-form {
+	margin: auto;
+	width: 500px;
+	padding: 2rem;
+	border-radius: 0.8rem;
+	background-color: #dedee7;
+	position: relative;
+}
+
+.error-msg {
+	font-size: 0.8rem;
+	position: absolute !important;
+	bottom: -3 !important;
+	padding-right: 30px;
+	width: 100%;
+}
+
+.error-msg label {
+	overflow: hidden;
+	overflow-wrap: break-word;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+}
+
+#btnSubmit {
+	width: 100%;
+}
+
+#btnCancel {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	border-radius: 0.8rem;
+	width: 2rem;
+	height: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#btnCancel:hover {
+	cursor: pointer;
+}
+
+#btnCancel img {
+	width: 60%;
+	height: 60%;
+}

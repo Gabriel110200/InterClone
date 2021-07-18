@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="stylesheet" href="/InterClone/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<title>Cadastro</title>
+	</head>
+	<body>
+		<div class="form-container">
+			<form id="form" class="main-form" action="../">
+				<h2 class="text-center mb-2">Cadastrar Lançamento</h2>
+
+				<div id="btnCancel">
+					<img src="/InterClone/images/icons/close.png" alt="Cancelar" title="Cancelar" />
+				</div>
+
+				<div class="row mb-1 mt-4">
+					<div class="form-group col">
+						<label for="account">Conta-Corrente:</label>
+						<select id="account" name="account" class="form-control">
+							<option disabled selected value>- Selecione uma opção -</option>
+							<option>Conta X</option>
+							<option>...</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="form-group col">
+						<label for="category">Categoria:</label>
+						<select id="category" name="category" class="form-control">
+							<option disabled selected value>- Selecione uma opção -</option>
+							<option>Conta de luz</option>
+							<option>Viagem</option>
+							<option>...</option>
+						</select>
+					</div>
+					<div class="form-group col">
+						<label for="operation">Operação:</label>
+						<select id="operation" name="operation" class="form-control">
+							<option disabled selected value>- Selecione uma opção -</option>
+							<option>Crédito</option>
+							<option>Débito</option>
+						</select>
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="form-group col">
+						<label for="value">Valor:</label>
+						<input type="text" class="form-control" name="value" id="value" />
+					</div>
+					<div class="form-group col">
+						<label for="date">Data:</label>
+						<input type="date" class="form-control" name="date" id="date" />
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="form-group col">
+						<div class="form-group">
+							<label for="name">Descrição:</label>
+							<textarea class="form-control" name="description" id="description" rows="3" maxlength="100"></textarea>
+						</div>
+					</div>
+				</div>
+				<button id="btnSubmit" type="submit" class="btn btn-success">Cadastrar</button>
+			</form>
+		</div>
+
+		<script src="/InterClone/js/jquery-3.6.0.min.js"></script>
+		<script src="/InterClone/js/jquery.mask.js"></script>
+		<script src="/InterClone/js/popper.min.js"></script>
+		<script src="/InterClone/js/bootstrap.min.js"></script>
+		<script src="/InterClone/js/jquery.validate.min.js"></script>
+		<script src="/InterClone/js/additional-methods.min.js"></script>
+		<script src="/InterClone/js/localization/messages_pt_BR.js"></script>
+
+		<script>
+			$(document).ready(function () {
+				$('#form').validate({
+					errorPlacement: function (label, element) {
+						label.addClass('error-msg text-danger');
+						label.insertAfter(element);
+					},
+					wrapper: 'span',
+					rules: {
+						account: {
+							required: true,
+						},
+						category: {
+							required: true,
+						},
+						operation: {
+							required: true,
+						},
+						value: {
+							required: true,
+						},
+						date: {
+							required: true,
+						},
+						description: {
+							required: true,
+							maxlength: 100,
+						},
+					},
+					submitHandler: function (form) {
+						alert('Cadastro do lançamento realizado');
+					},
+				});
+
+				$('#value').mask('0.000.000.000,00', { reverse: true });
+				$('#btnCancel').click(() => (document.location.href = '/InterClone/externo'));
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="stylesheet" href="/InterClone/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<title>Dashboard</title>
+	</head>
+	<body>
+		<div class="dashboard">
+			<div class="dashboard-container">
+				<h1>Acesso administrativo</h1>
+
+				<div class="buttons-container">
+					<div class="row">
+						<div class="col-4">
+							<button class="dashboard-button" id="newAdm">Cadastrar Admins</button>
+						</div>
+						<div class="col-4">
+							<button class="dashboard-button" id="newUser">Cadastrar Usuários</button>
+						</div>
+						<div class="col-4">
+							<button class="dashboard-button" id="newCategory">Cadastrar Categorias</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<button class="dashboard-button" disabled>Listar Admins</button>
+						</div>
+						<div class="col-4">
+							<button class="dashboard-button" disabled>Listar Usuários</button>
+						</div>
+						<div class="col-4">
+							<button class="dashboard-button" disabled>Listar Categorias</button>
+						</div>
+					</div>
+				</div>
+				<a href="/InterClone">Voltar para a página Inicial</a>
+			</div>
+		</div>
+
+		<div
+			class="modal fade"
+			id="exampleModalCenter"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body" id="content"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/InterClone/js/jquery-3.6.0.min.js"></script>
+		<script src="/InterClone/js/popper.min.js"></script>
+		<script src="/InterClone/js/bootstrap.min.js"></script>
+
+		<script>
+			$(document).ready(function () {
+				$('#newAdm').click(() => (document.location.href = './cadastro/administrador'));
+				$('#newUser').click(() => (document.location.href = './cadastro/usuario'));
+				$('#newCategory').click(() => (document.location.href = './cadastro/categoria'));
+			});
+		</script>
+	</body>
+</html>
