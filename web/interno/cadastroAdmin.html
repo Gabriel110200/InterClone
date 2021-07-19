@@ -3,18 +3,19 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<link rel="stylesheet" href="/InterClone/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="style.css" />
+		<base href="/InterClone/" target="_blank" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 		<title>Cadastro</title>
 	</head>
 	<body>
 		<div class="form-container">
 			<form id="form" class="main-form" action="../">
-				<h2 class="text-center mb-2">Cadastrar Usuário</h2>
+				<h2 class="text-center mb-2">Cadastrar Administrador</h2>
 
 				<div id="btnCancel">
-					<img src="/InterClone/images/icons/close.png" alt="Cancelar" title="Cancelar" />
+					<img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
 				</div>
 
 				<div class="row mb-3 mt-4">
@@ -31,7 +32,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row mb-3">
+				<div class="row mb-4">
 					<div class="col">
 						<div class="form-group">
 							<label for="password">Senha:</label>
@@ -45,25 +46,17 @@
 						</div>
 					</div>
 				</div>
-				<div class="row mb-4">
-					<div class="col">
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="suspended" name="suspended" />
-							<label class="form-check-label" for="suspended">Suspender</label>
-						</div>
-					</div>
-				</div>
 				<button id="btnSubmit" type="submit" class="btn btn-success">Cadastrar</button>
 			</form>
 		</div>
 
-		<script src="/InterClone/js/jquery-3.6.0.min.js"></script>
-		<script src="/InterClone/js/jquery.mask.js"></script>
-		<script src="/InterClone/js/popper.min.js"></script>
-		<script src="/InterClone/js/bootstrap.min.js"></script>
-		<script src="/InterClone/js/jquery.validate.min.js"></script>
-		<script src="/InterClone/js/additional-methods.min.js"></script>
-		<script src="/InterClone/js/localization/messages_pt_BR.js"></script>
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script src="js/jquery.mask.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/additional-methods.min.js"></script>
+		<script src="js/localization/messages_pt_BR.js"></script>
 
 		<script>
 			$(document).ready(function () {
@@ -97,7 +90,7 @@
 				});
 
 				$('.cpf').mask('000.000.000-00', { reverse: true });
-				$('#btnCancel').click(() => (document.location.href = '/InterClone/interno'));
+				$('#btnCancel').click(() => (document.location.href = 'interno'));
 			});
 		</script>
 	</body>

@@ -3,8 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<link rel="stylesheet" href="/InterClone/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="style.css" />
+		<base href="/InterClone/" target="_blank" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 		<title>Cadastro</title>
 	</head>
@@ -14,7 +15,7 @@
 				<h2 class="text-center mb-2">Cadastrar Lançamento</h2>
 
 				<div id="btnCancel">
-					<img src="/InterClone/images/icons/close.png" alt="Cancelar" title="Cancelar" />
+					<img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
 				</div>
 
 				<div class="row mb-1 mt-4">
@@ -68,13 +69,12 @@
 			</form>
 		</div>
 
-		<script src="/InterClone/js/jquery-3.6.0.min.js"></script>
-		<script src="/InterClone/js/jquery.mask.js"></script>
-		<script src="/InterClone/js/popper.min.js"></script>
-		<script src="/InterClone/js/bootstrap.min.js"></script>
-		<script src="/InterClone/js/jquery.validate.min.js"></script>
-		<script src="/InterClone/js/additional-methods.min.js"></script>
-		<script src="/InterClone/js/localization/messages_pt_BR.js"></script>
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script src="js/jquery.mask.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/localization/messages_pt_BR.js"></script>
 
 		<script>
 			$(document).ready(function () {
@@ -111,7 +111,7 @@
 				});
 
 				$('#value').mask('0.000.000.000,00', { reverse: true });
-				$('#btnCancel').click(() => (document.location.href = '/InterClone/externo'));
+				$('#btnCancel').click(() => (document.location.href = 'externo'));
 			});
 		</script>
 	</body>

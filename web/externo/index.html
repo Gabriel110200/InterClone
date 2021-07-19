@@ -3,8 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<link rel="stylesheet" href="/InterClone/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="style.css" />
+		<base href="/InterClone/" target="_blank" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 		<title>Dashboard</title>
 	</head>
@@ -42,14 +43,14 @@
 			</div>
 		</div>
 
-		<script src="/InterClone/js/jquery-3.6.0.min.js"></script>
-		<script src="/InterClone/js/popper.min.js"></script>
-		<script src="/InterClone/js/bootstrap.min.js"></script>
+		<script src="js/jquery-3.6.0.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 
 		<script>
 			$(document).ready(function () {
-				$('#newAccount').click(() => (document.location.href = './cadastro/conta'));
-				$('#newBankPosting').click(() => (document.location.href = './cadastro/lancamento'));
+				$('#newAccount').click(() => (document.location.href = 'externo/cadastroConta.html'));
+				$('#newBankPosting').click(() => (document.location.href = 'externo/cadastroLancamento.html'));
 			});
 		</script>
 	</body>
