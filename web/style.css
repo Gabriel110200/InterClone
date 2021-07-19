@@ -1,5 +1,6 @@
 html,body{
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 .firstSection{ 
@@ -35,7 +36,8 @@ html,body{
 } 
 
 .customButton:hover{
-    opacity: 0.9;
+    opacity: 0.9; 
+    cursor:pointer;
 } 
 
 .descricao{
