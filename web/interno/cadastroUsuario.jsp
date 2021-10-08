@@ -1,3 +1,4 @@
+<%@page import="aplicacao.Usuario"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -8,48 +9,52 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
         <title>Cadastro</title>
-    </head>
+    </head> 
+             <% Usuario usuario = ( Usuario ) request.getAttribute("usuario"); %>
     <body>
         <div class="form-container">
-            <form id="form" class="main-form" action="../">
-                <h2 class="text-center mb-2">Cadastrar Conta</h2>
+            <form id="form" class="main-form" action="UsuarioController">
+                <h2 class="text-center mb-2">Cadastrar Usuário</h2>
 
                 <div id="btnCancel">
                     <img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
-                </div>
+                </div> 
+                
+                <input type="hidden" name="id" value="<%= usuario.getId() %>" />
 
                 <div class="row mb-3 mt-4">
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" class="cpf form-control" name="cpf" value="<%= usuario.getCpf() %>"  id="cpf" placeholder="000.000.000-00" />
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="name">Nome:</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="name"
-                                id="name"
-                                placeholder="Digite um apelido para a conta corrente"
-                                maxlength="20"
-                                />
+                            <input type="text" class="form-control" name="name" value="<%= usuario.getNome() %>" id="name" maxlength="20" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="password">Senha:</label>
+                            <input type="password" class="form-control" name="password" value="<%= usuario.getSenha() %>" id="password" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar senha:</label>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" />
                         </div>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col">
-                        <div class="form-group">
-                            <label for="password">Banco:</label>
-                            <input type="text" class="form-control" name="bank" id="bank" />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="confirmPassword">AgÃªncia:</label>
-                            <input type="text" class="form-control" name="agency" id="agency" />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="confirmPassword">Conta-corrente:</label>
-                            <input type="text" class="form-control" name="account" id="account" />
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="suspended" name="suspended" />
+                            <label class="form-check-label" for="suspended">Suspender</label>
                         </div>
                     </div>
                 </div>
@@ -62,6 +67,7 @@
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
+        <script src="js/additional-methods.min.js"></script>
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script>
@@ -77,29 +83,28 @@
                             required: true,
                             maxlength: 20,
                         },
-                        bank: {
+                        cpf: {
                             required: true,
-                            maxlength: 3,
+                            cpfBR: true,
                         },
-                        agency: {
+                        password: {
                             required: true,
-                            maxlength: 6,
+                            minlength: 3,
                         },
-                        account: {
+                        confirmPassword: {
                             required: true,
-                            maxlength: 6,
+                            equalTo: '#password',
                         },
                     },
                     submitHandler: function (form) {
-                        alert('Cadastro da conta-corrente ' + $(form).find('input[name="name"]').val() + ' realizado');
+                        alert('Cadastro do ' + $(form).find('input[name="name"]').val() + ' realizado');
                     },
                 });
 
-                $('#bank').mask('000');
-                $('#agency').mask('000000');
-                $('#account').mask('000000');
-                $('#btnCancel').click(() => (document.location.href = 'externo'));
+                $('.cpf').mask('000.000.000-00', {reverse: true});
+                $('#btnCancel').click(() => (document.location.href = 'interno'));
             });
         </script>
     </body>
 </html>
+
