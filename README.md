@@ -1,2 +1,2 @@
 # Banco InterClone
- Um clone do  banco Inter tendo inclusive as funcionalidades de uma conta corrente
+ Um sistema bancario onde é possível acessar o sistema como administrador e cadastrar outros administradores e usuários no banco de dados. 
