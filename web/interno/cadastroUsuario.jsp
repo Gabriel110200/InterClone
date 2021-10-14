@@ -13,8 +13,8 @@
              <% Usuario usuario = ( Usuario ) request.getAttribute("usuario"); %>
     <body>
         <div class="form-container">
-            <form id="form" class="main-form" action="UsuarioController">
-                <h2 class="text-center mb-2">Cadastrar Usuário</h2>
+            <form id="form" class="main-form" method="POST" action="UsuarioController">
+                <h2 class="text-center mb-2">Cadastrar Usuárioooooo</h2>
 
                 <div id="btnCancel">
                     <img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
@@ -70,7 +70,8 @@
         <script src="js/additional-methods.min.js"></script>
         <script src="js/localization/messages_pt_BR.js"></script>
 
-        <script>
+        <script> 
+            /*
             $(document).ready(function () {
                 $('#form').validate({
                     errorPlacement: function (label, element) {
@@ -103,7 +104,7 @@
 
                 $('.cpf').mask('000.000.000-00', {reverse: true});
                 $('#btnCancel').click(() => (document.location.href = 'interno'));
-            });
+            }); */
         </script>
     </body>
 </html>

@@ -20,7 +20,7 @@
                             <button class="dashboard-button" id="newAdm">Cadastrar Admins</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" id="newUser">Cadastrar Usuários</button>
+                            <button class="dashboard-button" ><a href="UsuarioController?acao=inserir">Cadastrar Usuários</a></button>
                         </div>
                         <div class="col-4">
                             <button class="dashboard-button" id="newCategory">Cadastrar Categorias</button>
@@ -31,14 +31,14 @@
                             <button class="dashboard-button" disabled>Listar Admins</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" disabled><a href="mostrarUsuarios.jsp" >Listar Usuários</a></button>
+                            <button class="dashboard-button" ><a href="interno/mostrarUsuarios.jsp" >Listar Usuários</a></button>
                         </div>
                         <div class="col-4">
                             <button class="dashboard-button" disabled>Listar Categorias</button>
                         </div>
                     </div>
                 </div>
-                <a href="/InterClone">Voltar para a página Inicial</a>
+                <a href="/InterClone">Voltar para a página Iniciall</a>
             </div>
         </div>
 
@@ -62,11 +62,11 @@
         <script src="js/bootstrap.min.js"></script>
 
         <script>
-            $(document).ready(function () {
+           /*$(document).ready(function () {
                 $('#newAdm').click(() => (document.location.href = 'interno/cadastroAdmin.html'));
                 $('#newUser').click(() => (document.location.href = 'UsuarioController?acao=inserir'));
                 $('#newCategory').click(() => (document.location.href = 'interno/cadastroCategoria.html'));
-            });
+            }); */
         </script>
     </body>
 </html>
