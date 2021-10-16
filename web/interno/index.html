@@ -20,7 +20,7 @@
                             <button class="dashboard-button" id="newAdm">Cadastrar Admins</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" ><a href="UsuarioController?acao=inserir">Cadastrar Usuários</a></button>
+                            <button class="dashboard-button" id="newUser" >Cadastrar Usuários</button>
                         </div>
                         <div class="col-4">
                             <button class="dashboard-button" id="newCategory">Cadastrar Categorias</button>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <button class="dashboard-button" disabled>Listar Admins</button>
+                            <button class="dashboard-button" id="showAdmin">Listar Admins</button>
                         </div>
                         <div class="col-4">
                             <button class="dashboard-button" ><a href="interno/mostrarUsuarios.jsp" >Listar Usuários</a></button>
@@ -62,11 +62,12 @@
         <script src="js/bootstrap.min.js"></script>
 
         <script>
-           /*$(document).ready(function () {
-                $('#newAdm').click(() => (document.location.href = 'interno/cadastroAdmin.html'));
+           $(document).ready(function () {
+                $('#newAdm').click(() => (document.location.href = 'AdministradorController?acao=inserir'));
                 $('#newUser').click(() => (document.location.href = 'UsuarioController?acao=inserir'));
-                $('#newCategory').click(() => (document.location.href = 'interno/cadastroCategoria.html'));
-            }); */
+                $('#newCategory').click(() => (document.location.href = 'CategoriaController?acao=inserir')); 
+                $('#showAdmin').click(()=>(document.location.href='interno/mostrarAdmin.jsp'));
+            }); 
         </script>
     </body>
 </html>

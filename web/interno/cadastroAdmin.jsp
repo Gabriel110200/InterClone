@@ -14,14 +14,14 @@
             
             <% Administrador adm = (Administrador) request.getAttribute("adm"); %>
 		<div class="form-container">
-			<form id="form" class="main-form" action="AdministradorController">
+			<form id="form" class="main-form" method="POST" action="AdministradorController">
 				<h2 class="text-center mb-2">Cadastrar Administrador</h2>
 
 				<div id="btnCancel">
 					<img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
 				</div> 
                                 
-                                <input type="hidden" value="<%= adm.getId() %>" nome="id" />
+                                <input type="hidden" value="<%= adm.getId() %>" name="id" />
 
 				<div class="row mb-3 mt-4">
 					<div class="col-5">
@@ -33,7 +33,7 @@
 					<div class="col">
 						<div class="form-group">
 							<label for="name">Nome:</label>
-							<input type="text" class="form-control" value="<%=adm.getNome() %>" name="name" id="name" maxlength="20" />
+							<input type="text" class="form-control" value="<%=adm.getNome() %>" name="nome" id="name" maxlength="20" />
 						</div>
 					</div>
 				</div>
@@ -41,13 +41,13 @@
 					<div class="col">
 						<div class="form-group">
 							<label for="password">Senha:</label>
-                                                        <input type="password" class="form-control" value="<%=adm.getSenha() %>" name="password" id="password" />
+                                                        <input type="password" class="form-control" value="<%=adm.getSenha() %>" name="senha" id="password" />
 						</div>
 					</div>
 					<div class="col">
 						<div class="form-group">
 							<label for="confirmPassword">Confirmar senha:</label>
-                                                        <input type="password" class="form-control" value="<%=adm.getSenha() %>" name="confirmPassword" id="confirmPassword" />
+                                                        <input type="password" class="form-control" value="<%=adm.getSenha() %>" name="confirmarSenha" id="confirmPassword" />
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 		<script src="js/localization/messages_pt_BR.js"></script>
 
 		<script>
-			$(document).ready(function () {
+		/*	$(document).ready(function () {
 				$('#form').validate({
 					errorPlacement: function (label, element) {
 						label.addClass('error-msg text-danger');
@@ -96,7 +96,7 @@
 
 				$('.cpf').mask('000.000.000-00', { reverse: true });
 				$('#btnCancel').click(() => (document.location.href = 'interno'));
-			});
+			}); */
 		</script>
 	</body>
 </html>

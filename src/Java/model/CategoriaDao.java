@@ -5,8 +5,17 @@
  */
 package model;
 
+import aplicacao.Categoria;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,69 +29,76 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CategoriaDao", urlPatterns = {"/CategoriaDao"})
 public class CategoriaDao extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CategoriaDao</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CategoriaDao at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+    private Connection conexao = null;
+
+    public CategoriaDao() {
+
+        try {
+            conexao = Conexao.criaConexao();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    public ArrayList<Categoria> mostrar() throws SQLException {
+
+        String sql = "SELECT * FROM administradores";
+        ArrayList<Categoria> lista_categoria = new ArrayList<>();
+
+        Statement stmt = conexao.createStatement();
+
+        ResultSet rs = stmt.executeQuery(sql);
+
+        while (rs.next()) { 
+            
+            Categoria categoria = new Categoria();
+            categoria.setId(rs.getInt("id"));
+            categoria.setDescricao(rs.getString("descricao"));
+            lista_categoria.add(categoria);
+
+        }
+
+        return lista_categoria;
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    public void inserir(Categoria categoria) throws SQLException {
+
+        String sql;
+
+        if (categoria.getId() == 0) {
+            sql = "INSERT INTO categorias(descricao) VALUES(?)";
+        } else {
+            sql = "UPDATE categorias SET  descricao = ? WHERE id =?";
+        }
+
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+
+        
+        stmt.setString(1, categoria.getDescricao()); 
+        
+        if(categoria.getId()>0){
+            stmt.setInt(2, categoria.getId());
+        }
+
+        stmt.executeUpdate();
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    public void remover(int id) {
+
+        String sql = "DELETE FROM categorias WHERE id=? ";
+
+        try {
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AdministradoresDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
 }

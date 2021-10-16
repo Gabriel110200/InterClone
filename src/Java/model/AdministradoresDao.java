@@ -29,9 +29,9 @@ import java.util.ArrayList;
 @WebServlet(name = "AdministradoresDao", urlPatterns = {"/AdministradoresDao"})
 public class AdministradoresDao extends HttpServlet {
 
-    Connection conexao;
+    private Connection conexao = null;
 
-    public void AdministradoresDao() {
+    public  AdministradoresDao() {
         try {
             conexao = Conexao.criaConexao();
         } catch (SQLException ex) {
@@ -45,10 +45,9 @@ public class AdministradoresDao extends HttpServlet {
         boolean value = false;
         
         try { 
+            
             Statement stmt = conexao.createStatement(); 
-            
-          
-            
+
             ResultSet rs = stmt.executeQuery(sql); 
             
             
@@ -81,14 +80,14 @@ public class AdministradoresDao extends HttpServlet {
         
         String sql = "SELECT * FROM administradores"; 
         ArrayList<Administrador> lista_adm = new ArrayList<>();
-        Administrador adm = new Administrador(); 
+       
         
         Statement stmt = conexao.createStatement(); 
         
         ResultSet rs = stmt.executeQuery(sql); 
         
         while(rs.next()){
-            
+            Administrador adm = new Administrador(); 
             adm.setId(rs.getInt("id")); 
             adm.setNome(rs.getString("nome")); 
             adm.setCpf(rs.getString("cpf")); 
@@ -106,21 +105,27 @@ public class AdministradoresDao extends HttpServlet {
     
 
     public void inserir(Administrador administrador) {
-        String sql;
+        String sql; 
+        
         if (administrador.getId() == 0) {
-            sql = "INSERT INTO administradores VALUES (?,?,?,?)";
+            sql = "INSERT INTO administradores(nome,cpf,senha) VALUES (?,?,?)";
 
         } else {
-            sql = "UPDATE administradores SET id=?,nome=?,cpf=?,senha=?";
+            sql = "UPDATE administradores SET nome=?,cpf=?,senha=? WHERE id=? ";
         }
 
         try {
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
-            stmt.setInt(1, administrador.getId());
-            stmt.setString(2, administrador.getNome());
-            stmt.setString(3, administrador.getCpf());
-            stmt.setString(4, administrador.getSenha());
+           
+            stmt.setString(1, administrador.getNome());
+            stmt.setString(2, administrador.getCpf());
+            stmt.setString(3, administrador.getSenha()); 
+            
+            if(administrador.getId()>0){
+                 stmt.setInt(4, administrador.getId());
+            }
+            
             stmt.executeUpdate();
 
         } catch (SQLException ex) {

@@ -14,7 +14,7 @@
     <body>
         <div class="form-container">
             <form id="form" class="main-form" method="POST" action="UsuarioController">
-                <h2 class="text-center mb-2">Cadastrar Usuárioooooo</h2>
+                <h2 class="text-center mb-2">Cadastrar Usuário</h2>
 
                 <div id="btnCancel">
                     <img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
