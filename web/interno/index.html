@@ -31,10 +31,10 @@
                             <button class="dashboard-button" id="showAdmin">Listar Admins</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" ><a href="interno/mostrarUsuarios.jsp" >Listar Usuários</a></button>
+                            <button class="dashboard-button" id="showUser" >Listar Usuários</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" disabled>Listar Categorias</button>
+                            <button class="dashboard-button" id="showCategoria">Listar Categorias</button>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,9 @@
                 $('#newAdm').click(() => (document.location.href = 'AdministradorController?acao=inserir'));
                 $('#newUser').click(() => (document.location.href = 'UsuarioController?acao=inserir'));
                 $('#newCategory').click(() => (document.location.href = 'CategoriaController?acao=inserir')); 
-                $('#showAdmin').click(()=>(document.location.href='interno/mostrarAdmin.jsp'));
+                $('#showAdmin').click(()=>(document.location.href='interno/mostrarAdmin.jsp')); 
+                $('#showUser').click(()=>(document.location.href='interno/mostrarUsuarios.jsp')); 
+                $('#showCategoria').click(()=>(document.location.href='interno/mostrarCategoria.jsp'));
             }); 
         </script>
     </body>

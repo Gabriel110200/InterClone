@@ -42,6 +42,38 @@ public class ConexaoDao extends HttpServlet {
             System.out.println("Problema ao criar o DAO");
         }
 
+    } 
+    
+    public boolean validarLogin(String cpf,String senha){
+        
+        String sql = "SELECT * FROM usuarios";
+        boolean value = false;
+        try { 
+            Statement stmt = conexao.createStatement(); 
+            
+            ResultSet rs  = stmt.executeQuery(sql); 
+            
+            while(rs.next()){ 
+                
+                String cpf_table  = rs.getString("cpf"); 
+                String senha_table = rs.getString("senha");
+                
+                
+                if(cpf_table.equals(cpf) && senha_table.equals(senha)){ // modo diferente de fazer nao funfou
+                    
+                    value = true;
+                    
+                }
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return value;
+        
+        
     }
 
     public ArrayList<Usuario> mostrar_usuarios() {
@@ -111,7 +143,7 @@ public class ConexaoDao extends HttpServlet {
     }
 
     public Usuario getUsuarioPorId(int id) {
-        Usuario usuario = new Usuario();
+       
         try {
 
             String sql = "SELECT  * FROM usuarios";
@@ -123,13 +155,16 @@ public class ConexaoDao extends HttpServlet {
             while (rs.next()) {
 
                 if (id == rs.getInt("id"));
-                {
+                { 
+                   
                     String nome = rs.getString("nome");
                     String cpf = rs.getString("cpf");
                     String senha = rs.getString("senha");
                     String sus = rs.getString("suspenso");
 
-                    usuario = new Usuario(id, nome, cpf, senha, sus);
+                    Usuario usuario = new Usuario(id, cpf, nome, senha, sus); 
+                    
+                    return usuario;
 
                 }
 
@@ -139,7 +174,7 @@ public class ConexaoDao extends HttpServlet {
             ex.printStackTrace();
         }
 
-        return usuario;
+        return null;
 
     }
 

@@ -87,7 +87,7 @@ public class UsuarioController extends HttpServlet {
         String nome = request.getParameter("name");
         String senha = request.getParameter("password");
 
-        Usuario usuario = new Usuario(id, nome, cpf, senha, "N");
+        Usuario usuario = new Usuario(id, cpf, nome, senha, "N");
 
         usuariodao.inserir_usuarios(usuario);
 

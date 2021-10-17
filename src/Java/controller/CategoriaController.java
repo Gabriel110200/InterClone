@@ -26,66 +26,64 @@ import model.CategoriaDao;
 @WebServlet(name = "CategoriaController", urlPatterns = {"/CategoriaController"})
 public class CategoriaController extends HttpServlet {
 
-  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String acao  = (String) request.getParameter("acao"); 
-        Categoria categoria = new Categoria(); 
-        CategoriaDao categoriaDao = new CategoriaDao(); 
+        String acao = (String) request.getParameter("acao");
+        Categoria categoria = new Categoria();
+        CategoriaDao categoriaDao = new CategoriaDao();
         int id;
-        
-        switch(acao){
-            
-            case "inserir":  
-                
-                categoria.setId(0); 
-                categoria.setDescricao(""); 
-                request.setAttribute("categoria",categoria);
-                RequestDispatcher incluir = request.getRequestDispatcher("/interno/cadastroCategoria.jsp"); 
+
+        switch (acao) {
+
+            case "inserir":
+
+                categoria.setId(0);
+                categoria.setDescricao("");
+                request.setAttribute("categoria", categoria);
+                RequestDispatcher incluir = request.getRequestDispatcher("/interno/cadastroCategoria.jsp");
                 incluir.forward(request, response);
-                
-            break; 
-            
-            
-            case "editar": 
-             
-                id = Integer.parseInt( request.getParameter("id") ) ; 
-                String descricao = request.getParameter("descricao"); 
-                categoria.setDescricao(descricao);
-                categoria.setId(id); 
-                
-                request.setAttribute("categoria",categoria); 
-                
-                RequestDispatcher editar = request.getRequestDispatcher("/interno/cadastroCategoria.jsp"); 
+
+                break;
+
+            case "editar":
+
+                id = Integer.parseInt(request.getParameter("id"));
+                categoria = categoriaDao.getCategoriaPorId(id);
+                request.setAttribute("categoria", categoria);
+
+                RequestDispatcher editar = request.getRequestDispatcher("/interno/cadastroCategoria.jsp");
                 editar.forward(request, response);
-         
- 
-            
-            break; 
-            
-            
-            case "excluir": 
-               id = Integer.parseInt( request.getParameter("id"));  
-               categoriaDao.remover(id);
-               
-               RequestDispatcher excluir = request.getRequestDispatcher("/interno/mostrarCategoria.jsp");
-               excluir.forward(request, response);
-             break;
-            
-            
-            
+
+                break;
+
+            case "excluir":
+                id = Integer.parseInt(request.getParameter("id"));
+                categoriaDao.remover(id);
+                RequestDispatcher excluir = request.getRequestDispatcher("/interno/mostrarCategoria.jsp");
+                excluir.forward(request, response);
+                break;
+
         }
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+
+        CategoriaDao categoriaDao = new CategoriaDao();
+        Categoria categoria = new Categoria();
+        int id = Integer.parseInt(request.getParameter("id"));
+        String descricao = request.getParameter("descricao");
+
+        categoria.setDescricao(descricao); 
+        categoriaDao.inserir(categoria); 
+        
+        RequestDispatcher rd = request.getRequestDispatcher("/interno/sucesso.html"); 
+        rd.forward(request, response);
+
     }
 
-   
     @Override
     public String getServletInfo() {
         return "Short description";

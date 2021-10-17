@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AdministradoresDao;
+import model.ConexaoDao;
 
 /**
  *
@@ -32,7 +33,8 @@ public class LoginController extends HttpServlet {
         
         String cpf = request.getParameter("cpf"); 
         String senha = request.getParameter("senha"); 
-        AdministradoresDao admDao = new AdministradoresDao(); 
+        AdministradoresDao admDao = new AdministradoresDao();  
+        ConexaoDao usuarioDao = new ConexaoDao();
         
         if(admDao.validarLogin(cpf, senha)){
             
@@ -40,7 +42,12 @@ public class LoginController extends HttpServlet {
             rd.forward(request, response);
             
             
-        } else {
+        }else if (usuarioDao.validarLogin(cpf, senha)){
+            
+            RequestDispatcher usuario = request.getRequestDispatcher("externo/index.html"); 
+            usuario.forward(request, response);
+            
+        }else {
             request.setAttribute("message","Login was not possible"); 
             RequestDispatcher rd = request.getRequestDispatcher("index.html"); 
             rd.forward(request, response);

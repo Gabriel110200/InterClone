@@ -1,3 +1,4 @@
+<%@page import="aplicacao.Conta"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -9,48 +10,51 @@
 
         <title>Cadastro</title>
     </head>
-    <body>
+    <body> 
+        
+        <%Conta conta = (Conta) request.getAttribute("conta"); %>
+        
         <div class="form-container">
-            <form id="form" class="main-form" action="../">
-                <h2 class="text-center mb-2">Cadastrar UsuÃ¡rio</h2>
+            <form id="form" class="main-form" action="ContaController">
+                <h2 class="text-center mb-2">Cadastrar Conta</h2>
 
                 <div id="btnCancel">
                     <img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
                 </div>
 
                 <div class="row mb-3 mt-4">
-                    <div class="col-5">
-                        <div class="form-group">
-                            <label for="cpf">CPF:</label>
-                            <input type="text" class="cpf form-control" name="cpf" id="cpf" placeholder="000.000.000-00" />
-                        </div>
-                    </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="name">Nome:</label>
-                            <input type="text" class="form-control" name="name" id="name" maxlength="20" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="password">Senha:</label>
-                            <input type="password" class="form-control" name="password" id="password" />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirmar senha:</label>
-                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" />
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                id="name"
+                                placeholder="Digite um apelido para a conta corrente"
+                                maxlength="20"               
+                                value="<%=conta.getNome_conta() %>"
+                                />
                         </div>
                     </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="suspended" name="suspended" value="S" />
-                            <label class="form-check-label" for="suspended">Suspender</label>
+                        <div class="form-group">
+                            <label for="password">Banco:</label>
+                            <input type="text" class="form-control" name="bank" id="bank" value="<%=conta.getBanco() %>" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="confirmPassword">Agência:</label>
+                            <input type="text" class="form-control" name="agency" id="agency" value="<%=conta.getAgencia() %>" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="confirmPassword">Conta-corrente:</label>
+                            <input type="text" class="form-control" name="account" id="account" value="<%=conta.getConta_corrente()%>" />
                         </div>
                     </div>
                 </div>
@@ -63,7 +67,6 @@
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.validate.min.js"></script>
-        <script src="js/additional-methods.min.js"></script>
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script>
@@ -79,27 +82,30 @@
                             required: true,
                             maxlength: 20,
                         },
-                        cpf: {
+                        bank: {
                             required: true,
-                            cpfBR: true,
+                            maxlength: 3,
                         },
-                        password: {
+                        agency: {
                             required: true,
-                            minlength: 3,
+                            maxlength: 6,
                         },
-                        confirmPassword: {
+                        account: {
                             required: true,
-                            equalTo: '#password',
+                            maxlength: 6,
                         },
                     },
                     submitHandler: function (form) {
-                        alert('Cadastro do ' + $(form).find('input[name="name"]').val() + ' realizado');
+                        alert('Cadastro da conta-corrente ' + $(form).find('input[name="name"]').val() + ' realizado');
                     },
                 });
 
-                $('.cpf').mask('000.000.000-00', {reverse: true});
-                $('#btnCancel').click(() => (document.location.href = 'interno'));
+                $('#bank').mask('000');
+                $('#agency').mask('000000');
+                $('#account').mask('000000');
+                $('#btnCancel').click(() => (document.location.href = 'externo'));
             });
         </script>
     </body>
 </html>
+

@@ -1,7 +1,6 @@
 <%@page import="model.CategoriaDao"%>
 <%@page import="aplicacao.Categoria"%>
-    Author     : T-Gamer
---%>
+ 
 
 <%@page import="model.ConexaoDao"%>
 <%@page import="java.util.ArrayList"%>
@@ -23,7 +22,8 @@
                 <thead>
                     <tr>
                         <th scope="col">id</th>
-                        <th scope="col">descricao</th>
+                        <th scope="col">descricao</th> 
+                        <th scope="col">Alterar</th>
                       
                     </tr>
                 </thead> 

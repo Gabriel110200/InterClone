@@ -43,15 +43,15 @@ public class CategoriaDao extends HttpServlet {
 
     public ArrayList<Categoria> mostrar() throws SQLException {
 
-        String sql = "SELECT * FROM administradores";
+        String sql = "SELECT * FROM categorias";
         ArrayList<Categoria> lista_categoria = new ArrayList<>();
 
         Statement stmt = conexao.createStatement();
 
         ResultSet rs = stmt.executeQuery(sql);
 
-        while (rs.next()) { 
-            
+        while (rs.next()) {
+
             Categoria categoria = new Categoria();
             categoria.setId(rs.getInt("id"));
             categoria.setDescricao(rs.getString("descricao"));
@@ -63,7 +63,7 @@ public class CategoriaDao extends HttpServlet {
 
     }
 
-    public void inserir(Categoria categoria) throws SQLException {
+    public void inserir(Categoria categoria) {
 
         String sql;
 
@@ -73,16 +73,21 @@ public class CategoriaDao extends HttpServlet {
             sql = "UPDATE categorias SET  descricao = ? WHERE id =?";
         }
 
-        PreparedStatement stmt = conexao.prepareStatement(sql);
+        PreparedStatement stmt;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setString(1, categoria.getDescricao());
 
-        
-        stmt.setString(1, categoria.getDescricao()); 
-        
-        if(categoria.getId()>0){
-            stmt.setInt(2, categoria.getId());
+            if (categoria.getId() > 0) {
+                stmt.setInt(2, categoria.getId());
+            }
+
+            stmt.executeUpdate(); 
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        stmt.executeUpdate();
 
     }
 
@@ -99,6 +104,39 @@ public class CategoriaDao extends HttpServlet {
             Logger.getLogger(AdministradoresDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    } 
+    
+    
+    public Categoria getCategoriaPorId(int id){
+        
+        String sql  = "SELECT * from categorias";  
+        Categoria categoria = new Categoria();
+        
+        try { 
+            Statement stmt = conexao.createStatement(); 
+            
+            ResultSet rs = stmt.executeQuery(sql); 
+            
+            while(rs.next()){
+                
+                if(rs.getInt("id")==id){
+                    
+                    categoria.setId(id); 
+                    categoria.setDescricao(rs.getString("descricao"));
+                    
+                }
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
+        return categoria;
+        
+        
+        
+        
     }
 
 }
