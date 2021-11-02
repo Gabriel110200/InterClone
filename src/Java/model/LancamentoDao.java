@@ -79,13 +79,13 @@ public class LancamentoDao extends HttpServlet {
     } 
     
     
-     public ArrayList<Lancamento> mostrar_lancamentos() {
+     public ArrayList<Lancamento> mostrar_lancamentos(int id) {
 
         ArrayList<Lancamento> lancamento_list = new ArrayList<>();
 
         try {
 
-            String sql = "SELECT * FROM usuarios";
+            String sql = "SELECT * FROM lancamentos WHERE id_conta = " + id;
             Statement stmt = conexao.createStatement();
 
             ResultSet rs = stmt.executeQuery(sql); 

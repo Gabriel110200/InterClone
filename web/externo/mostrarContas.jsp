@@ -1,11 +1,12 @@
 
+<%@page import="aplicacao.Usuario"%>
 <%@page import="aplicacao.Conta"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.ContaDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-     <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>  
         <base href="/InterClone/" target="_blank" />
@@ -30,32 +31,36 @@
 
                 <tbody>
                 <h1>Alterar dados da conta</h1>
-                    <%  ContaDao contaDao = new ContaDao();
-                        ArrayList<Conta> conta_lista = contaDao.mostrar();
-                        Conta conta = new Conta();
+                <%
+                    Usuario usuario = (Usuario) session.getAttribute("usuario");
+                    ContaDao contaDao = new ContaDao();
 
-                        for (int i = 0; i < conta_lista.size(); i++) {
-                            conta = conta_lista.get(i);
-                    %>
+                    ArrayList<Conta> conta_lista = contaDao.mostrar(usuario.getId());
+                    Conta conta = new Conta();
+
+                    for (int i = 0; i < conta_lista.size(); i++) {
+                        conta = conta_lista.get(i);
+                %>
 
 
-                    <tr>
-                        <td><%= conta.getId()%></td>
-                        <td><%= conta.getNome_conta()%></td>
-                        <td><%= conta.getAgencia()%></td> 
-                        <td><%= conta.getBanco() %></td> 
-                        <td><%= conta.getConta_corrente() %></td>
-                        <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= conta.getId()%>">Editar</a>   
-                            <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= conta.getId()%>"> Excluir</a></td>
-                    </tr>
-                    <% }%> 
-                    
-                    <a href="externo/index.jsp">Voltar</a>
+                <tr>
+                    <td><%= conta.getId()%></td>
+                    <td><%= conta.getNome_conta()%></td>
+                    <td><%= conta.getAgencia()%></td> 
+                    <td><%= conta.getBanco()%></td> 
+                    <td><%= conta.getConta_corrente()%></td>
+                    <td> <a class="btn btn-success" href="UsuarioController?acao=editar&id=<%= conta.getId()%>">Editar</a>   
+                        <a class="btn btn-danger" href="UsuarioController?acao=excluir&id=<%= conta.getId()%>"> Excluir</a> 
+                         <a class="btn btn-danger" href="mostrarLancamentos.jsp?id= <%= conta.getId() %>">Verificar lançamentos</a></td>
+                </tr>
+                <% }%> 
+
+                <a href="externo/index.jsp">Voltar</a>
                 </tbody>
             </table>  
         </div>
 
-                
+
     </body> 
 
     <script src="js/jquery-3.6.0.min.js"></script>

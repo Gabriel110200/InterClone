@@ -1,9 +1,11 @@
+<%@page import="aplicacao.Lancamento"%>
+<%@page import="model.LancamentoDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.ContaDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-     <head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>  
         <base href="/InterClone/" target="_blank" />
@@ -24,31 +26,56 @@
                         <th scope="col">operacao</th> 
                         <th scope="col">data</th> 
                         <th scope="col">descricao</th>
-                            
+
                     </tr>
                 </thead> 
 
-                <tbody>
-                <h1>Clique no nome da conta para seleciona-la e cadastrar lancamentos</h1>
-                    <%  ContaDao contaDao = new ContaDao();
-                        ArrayList<Conta> conta_lista = contaDao.mostrar();
-                        Conta conta = new Conta();
+                <tbody>  
+                <h1>Lancamentos</h1> 
+                
+                <p>saldo:</p>
+                    <%
+                        int id = Integer.parseInt(request.getParameter("id"));
+                        float valor_credito = 0;
+                        float valor_debito = 0;
 
-                        for (int i = 0; i < conta_lista.size(); i++) {
-                            conta = conta_lista.get(i);
-                    %>
+                        if (valor_credito > valor_debito) {
+                    %> 
+
+                <div class="alert alert-danger" role="alert">
+                    Sua conta está em negativo!
+                </div>
 
 
-                    <tr>
+                <%  }
+                    LancamentoDao lancamentoDao = new LancamentoDao();
+                    ArrayList<Lancamento> lancamento_lista = lancamentoDao.mostrar_lancamentos(id);
+                    Lancamento lancamento = new Lancamento();
 
-                        <td><%= conta.getNome_conta()%></td>
-                        <td><%= conta.getAgencia()%></td> 
-                        <td><%= conta.getBanco() %></td> 
-                        <td><%= conta.getConta_corrente() %></td>
-                        <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= conta.getId()%>">Editar</a>   
-                            <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= conta.getId()%>"> Excluir</a></td>
-                    </tr>
-                    <% }%>
+                    for (int i = 0; i < lancamento_lista.size(); i++) {
+                        lancamento = lancamento_lista.get(i);
+
+                        if (lancamento.getOperacao() == "C") {
+                            valor_credito += lancamento.getValor();
+                        } else {
+                            valor_debito += lancamento.getValor();
+                        }
+                %>
+
+
+                <tr>
+
+                    <td><%= lancamento.getId()%></td>
+                    <td><%= lancamento.getId_conta()%></td> 
+                    <td><%= lancamento.getId_categoria()%></td> 
+                    <td><%= lancamento.getValor()%></td> 
+                    <td><%= lancamento.getOperacao()%></td> 
+                    <td><%= lancamento.getData()%></td> 
+                    <td><%= lancamento.getDescricao()%></td>
+                    <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= lancamento.getId()%>">Editar</a>   
+                        <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= lancamento.getId()%>"> Excluir</a></td>
+                </tr>
+                <% }%>
                 </tbody>
             </table>  
         </div>

@@ -40,15 +40,19 @@ public class ContaDao extends HttpServlet {
         
     }  
     
-    public ArrayList<Conta> mostrar(){
-        String sql  = "SELECT * FROM contas"; 
+    public ArrayList<Conta> mostrar(int id){ 
         
+        String sql  = "SELECT * FROM contas WHERE id_usuario = " + id; 
         
         ArrayList<Conta> conta_list = new ArrayList();
         
         try { 
-            Statement stmt = conexao.createStatement(); 
-            ResultSet rs = stmt.executeQuery(sql); 
+           // PreparedStatement stmt = conexao.createStatement();  
+           Statement stmt = conexao.createStatement(); 
+           
+           ResultSet rs = stmt.executeQuery(sql); 
+            
+          
             
             while(rs.next()){
                 Conta conta = new Conta();  
