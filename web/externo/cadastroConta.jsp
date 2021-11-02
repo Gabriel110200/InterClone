@@ -15,13 +15,16 @@
         <%Conta conta = (Conta) request.getAttribute("conta"); %>
         
         <div class="form-container">
-            <form id="form" class="main-form" action="ContaController">
+            <form id="form" class="main-form" method="POST" action="ContaController">
                 <h2 class="text-center mb-2">Cadastrar Conta</h2>
 
                 <div id="btnCancel">
                     <img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
                 </div>
-
+                
+                <input type="hidden" value="<%= conta.getId() %>" name="id" /> 
+                <input type="hidden" value="<%= conta.getId_usuario()%>" name="id_usuario" />
+                
                 <div class="row mb-3 mt-4">
                     <div class="col">
                         <div class="form-group">
@@ -29,8 +32,8 @@
                             <input
                                 type="text"
                                 class="form-control"
-                                name="name"
-                                id="name"
+                                name="nome_conta"
+                                id="nome_conta"
                                 placeholder="Digite um apelido para a conta corrente"
                                 maxlength="20"               
                                 value="<%=conta.getNome_conta() %>"
@@ -42,19 +45,19 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="password">Banco:</label>
-                            <input type="text" class="form-control" name="bank" id="bank" value="<%=conta.getBanco() %>" />
+                            <input type="text" class="form-control" name="banco" id="banco" value="<%=conta.getBanco() %>" />
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="confirmPassword">Agência:</label>
-                            <input type="text" class="form-control" name="agency" id="agency" value="<%=conta.getAgencia() %>" />
+                            <input type="text" class="form-control" name="agencia" id="agencia" value="<%=conta.getAgencia() %>" />
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="confirmPassword">Conta-corrente:</label>
-                            <input type="text" class="form-control" name="account" id="account" value="<%=conta.getConta_corrente()%>" />
+                            <input type="text" class="form-control" name="conta_corrente" id="conta_corrente" value="<%=conta.getConta_corrente()%>" />
                         </div>
                     </div>
                 </div>
@@ -70,7 +73,7 @@
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script>
-            $(document).ready(function () {
+          /*  $(document).ready(function () {
                 $('#form').validate({
                     errorPlacement: function (label, element) {
                         label.addClass('error-msg text-danger');
@@ -104,7 +107,7 @@
                 $('#agency').mask('000000');
                 $('#account').mask('000000');
                 $('#btnCancel').click(() => (document.location.href = 'externo'));
-            });
+            }); */
         </script>
     </body>
 </html>

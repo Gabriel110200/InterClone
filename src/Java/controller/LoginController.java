@@ -5,6 +5,7 @@
  */
 package controller;
 
+import aplicacao.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.AdministradoresDao;
 import model.ConexaoDao;
 
@@ -32,7 +34,8 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         
         String cpf = request.getParameter("cpf"); 
-        String senha = request.getParameter("senha"); 
+        String senha = request.getParameter("senha");  
+        int id;
         AdministradoresDao admDao = new AdministradoresDao();  
         ConexaoDao usuarioDao = new ConexaoDao();
         
@@ -42,10 +45,19 @@ public class LoginController extends HttpServlet {
             rd.forward(request, response);
             
             
-        }else if (usuarioDao.validarLogin(cpf, senha)){
+        }else if (usuarioDao.validarLogin(cpf, senha)!=0){
             
-            RequestDispatcher usuario = request.getRequestDispatcher("externo/index.html"); 
-            usuario.forward(request, response);
+            id = usuarioDao.validarLogin(cpf, senha); 
+            Usuario usuario = new Usuario(); 
+            usuario = usuarioDao.getUsuarioPorId(id);  
+            
+            HttpSession session = request.getSession(); 
+            session.setAttribute("usuario", usuario); 
+            session.setAttribute("logado", "Usuario Logado");
+            
+            
+            RequestDispatcher usu = request.getRequestDispatcher("externo/index.jsp"); 
+            usu.forward(request, response);
             
         }else {
             request.setAttribute("message","Login was not possible"); 

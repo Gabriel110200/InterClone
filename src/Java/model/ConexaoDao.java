@@ -44,10 +44,10 @@ public class ConexaoDao extends HttpServlet {
 
     } 
     
-    public boolean validarLogin(String cpf,String senha){
+    public int validarLogin(String cpf,String senha){
         
         String sql = "SELECT * FROM usuarios";
-        boolean value = false;
+        int id = 0;
         try { 
             Statement stmt = conexao.createStatement(); 
             
@@ -57,11 +57,13 @@ public class ConexaoDao extends HttpServlet {
                 
                 String cpf_table  = rs.getString("cpf"); 
                 String senha_table = rs.getString("senha");
+                 
                 
-                
-                if(cpf_table.equals(cpf) && senha_table.equals(senha)){ // modo diferente de fazer nao funfou
+                if(cpf_table.equals(cpf) && senha_table.equals(senha)){ 
                     
-                    value = true;
+                    id = Integer.parseInt(rs.getString("id"));
+                    
+                   
                     
                 }
                 
@@ -71,7 +73,7 @@ public class ConexaoDao extends HttpServlet {
             Logger.getLogger(ConexaoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return value;
+        return id;
         
         
     }

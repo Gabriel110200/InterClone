@@ -51,7 +51,9 @@ public class ContaDao extends HttpServlet {
             ResultSet rs = stmt.executeQuery(sql); 
             
             while(rs.next()){
-                Conta conta = new Conta(); 
+                Conta conta = new Conta();  
+                conta.setId(rs.getInt("id")); 
+                conta.setId_usuario(rs.getInt("id_usuario"));
                 conta.setAgencia(rs.getString("agencia")); 
                 conta.setBanco(rs.getString("banco"));
                 conta.setConta_corrente(rs.getString("conta_corrente"));
@@ -73,7 +75,7 @@ public class ContaDao extends HttpServlet {
     public void inserir_conta(Conta conta){ 
         String sql;
         if(conta.getId()==0){
-           sql  = "INSERT INTO contas(nome_conta,banco,agencia,conta_corrente) VALUES(?,?,?,?)";
+           sql  = "INSERT INTO contas(id_usuario,nome_conta,banco,agencia,conta_corrente) VALUES(?,?,?,?,?)";
         } else {
             sql  = "UPDATE contas SET nome_conta =?,banco=?,agencia=?,conta_corrente=? WHERE id=?";
         }
@@ -83,20 +85,23 @@ public class ContaDao extends HttpServlet {
         try {
             PreparedStatement stmt = conexao.prepareStatement(sql); 
             
-            stmt.setString(1,conta.getNome_conta()); 
-            stmt.setString(2,conta.getBanco()); 
-            stmt.setString(3,conta.getAgencia()); 
-            stmt.setString(4,conta.getConta_corrente());  
+            stmt.setInt(1, conta.getId_usuario());
+            stmt.setString(2,conta.getNome_conta()); 
+            stmt.setString(3,conta.getBanco()); 
+            stmt.setString(4,conta.getAgencia()); 
+            stmt.setString(5,conta.getConta_corrente());  
             
             if(conta.getId()>0){
                 stmt.setInt(5, conta.getId());
             }
             
+            
+            
             stmt.executeUpdate();
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(ContaDao.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     } 
     

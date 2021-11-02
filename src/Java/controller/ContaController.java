@@ -6,6 +6,7 @@
 package controller;
 
 import aplicacao.Conta;
+import aplicacao.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.ContaDao;
 
 /**
@@ -32,14 +34,18 @@ public class ContaController extends HttpServlet {
         
         String acao = (String) request.getParameter("acao");
         Conta conta = new Conta();
-        ContaDao contaDao = new ContaDao();
-        int id;
+        ContaDao contaDao = new ContaDao(); 
+        HttpSession session = request.getSession();
+        int id; 
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
 
         switch (acao) {
 
             case "inserir":
 
-                conta.setId(0);
+                conta.setId(0);  
+                conta.setId_usuario(usuario.getId());
+                conta.setNome_conta("");
                 conta.setAgencia(""); 
                 conta.setBanco(""); 
                 conta.setConta_corrente(""); 
@@ -80,13 +86,17 @@ public class ContaController extends HttpServlet {
             throws ServletException, IOException {
         
         Conta conta = new Conta(); 
-        ContaDao contaDao = new ContaDao(); 
+        ContaDao contaDao = new ContaDao();  
         
+        int id = Integer.parseInt(request.getParameter("id")); 
+        int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
         String nome_conta =  request.getParameter("nome_conta");  
         String banco =  request.getParameter("banco");
         String agencia =  request.getParameter("agencia");
         String conta_corrente =  request.getParameter("conta_corrente"); 
         
+        conta.setId(id);
+        conta.setId_usuario(id_usuario);
         conta.setNome_conta(nome_conta);
         conta.setBanco(banco); 
         conta.setAgencia(agencia); 
@@ -99,6 +109,7 @@ public class ContaController extends HttpServlet {
       
     }
 
+
     /**
      * Returns a short description of the servlet.
      *
@@ -108,5 +119,4 @@ public class ContaController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
