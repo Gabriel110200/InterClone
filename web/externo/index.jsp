@@ -36,19 +36,17 @@
 
 
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <button class="dashboard-button" id="showAccount">Mostrar Contas</button>
                         </div> 
                         
-                        <div class="col-6">
-                            <button class="dashboard-button" id="showAccount">Mostrar Lançamentos</button>
-                        </div>
+                       
 
                     </div> 
 
                 </div> 
             </div>
-            <a href="/InterClone">Voltar para a página Inicial</a>
+              <a href="/InterClone" target="_self">Voltar para a página Inicial</a>
         </div>
     </div>
 
@@ -75,7 +73,8 @@
         $(document).ready(function () {
             $('#newAccount').click(() => (document.location.href = 'ContaController?acao=inserir'));
             $('#newBankPosting').click(() => (document.location.href = 'LancamentoController?acao=inserir'));
-            $('#showAccount').click(() => (document.location.href = 'externo/mostrarContas.jsp'));
+            $('#showAccount').click(() => (document.location.href = 'externo/mostrarContas.jsp')); 
+           
         });
     </script>
 </body>

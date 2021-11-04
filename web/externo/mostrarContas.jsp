@@ -18,7 +18,7 @@
         <div class="container pt-3">
             <table class="table"> 
 
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">id</th> 
                         <th scope="col">Nome da conta</th>
@@ -49,25 +49,29 @@
                     <td><%= conta.getAgencia()%></td> 
                     <td><%= conta.getBanco()%></td> 
                     <td><%= conta.getConta_corrente()%></td>
-                    <td> <a class="btn btn-success" href="UsuarioController?acao=editar&id=<%= conta.getId()%>">Editar</a>   
-                        <a class="btn btn-danger" href="UsuarioController?acao=excluir&id=<%= conta.getId()%>"> Excluir</a> 
-                         <a class="btn btn-danger" href="mostrarLancamentos.jsp?id= <%= conta.getId() %>">Verificar lançamentos</a></td>
+                    <td> <a class="btn btn-success" href="UsuarioController?acao=editar&id=<%= conta.getId()%>" target="_self">Editar</a>   
+                        <a class="btn btn-danger" href="UsuarioController?acao=excluir&id=<%= conta.getId()%>" target="_self"> Excluir</a> 
+                        <a class="btn btn-warning" href="LancamentoController?acao=mostrar&id=<%= conta.getId()%>" target="_self">Verificar lançamentos</a></td>
                 </tr>
                 <% }%> 
 
-                <a href="externo/index.jsp">Voltar</a>
+                <a href="externo/index.jsp" target="_self">Voltar</a>
                 </tbody>
             </table>  
         </div>
 
 
-    </body> 
 
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery.mask.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/additional-methods.min.js"></script>
-    <script src="js/localization/messages_pt_BR.js"></script>
+
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/jquery.mask.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/additional-methods.min.js"></script>
+        <script src="js/localization/messages_pt_BR.js"></script> 
+
+        
+
+    </body> 
 </html>

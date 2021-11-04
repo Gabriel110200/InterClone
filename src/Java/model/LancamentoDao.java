@@ -104,7 +104,9 @@ public class LancamentoDao extends HttpServlet {
                        Date date = rs.getDate("data"); 
                        String data = date.toString(); 
                        lancamento.setData(data);
-                       lancamento.setDescricao(rs.getString("desricao"));
+                       lancamento.setDescricao(rs.getString("descricao")); 
+                       
+                       lancamento_list.add(lancamento);
 
 
             }

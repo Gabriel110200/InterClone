@@ -25,19 +25,24 @@
                         <th scope="col">valor</th> 
                         <th scope="col">operacao</th> 
                         <th scope="col">data</th> 
-                        <th scope="col">descricao</th>
+                        <th scope="col">descricao</th> 
+                        <th scope="col">Alterar dados</th>
 
                     </tr>
                 </thead> 
 
-                <tbody>  
-                <h1>Lancamentos</h1> 
-                
-                <p>saldo:</p>
-                    <%
+                <tbody>   
+                    <%  
                         int id = Integer.parseInt(request.getParameter("id"));
                         float valor_credito = 0;
                         float valor_debito = 0;
+                    %>
+                    
+                <h1>Lancamentos</h1> 
+                
+                <p>saldo Total:<%= valor_debito - valor_credito %></p>
+                    <%
+                        
 
                         if (valor_credito > valor_debito) {
                     %> 
@@ -72,8 +77,8 @@
                     <td><%= lancamento.getOperacao()%></td> 
                     <td><%= lancamento.getData()%></td> 
                     <td><%= lancamento.getDescricao()%></td>
-                    <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= lancamento.getId()%>">Editar</a>   
-                        <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= lancamento.getId()%>"> Excluir</a></td>
+                    <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= lancamento.getId()%> " target="_self">Editar</a>   
+                        <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= lancamento.getId()%> " target="_self"> Excluir</a></td>
                 </tr>
                 <% }%>
                 </tbody>

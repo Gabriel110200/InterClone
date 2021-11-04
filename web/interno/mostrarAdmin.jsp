@@ -49,8 +49,8 @@
                         <td><%= adm.getCpf()%></td> 
                         <td><%= adm.getNome()%></td> 
                         <td><%= adm.getSenha()%></td>
-                        <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= adm.getId()%>">Editar</a>   
-                            <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= adm.getId()%>"> Excluir</a></td>
+                        <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= adm.getId()%>" target="_self">Editar</a>   
+                            <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= adm.getId()%>" target="_self"> Excluir</a></td>
                     </tr>
                     <% }%>
                 </tbody>

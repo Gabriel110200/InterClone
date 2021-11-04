@@ -63,7 +63,21 @@ public class LancamentoController extends HttpServlet {
                 RequestDispatcher editar = request.getRequestDispatcher("/externo/cadastroLancamento.jsp");
                 editar.forward(request, response);
 
-                break;
+                break; 
+                
+            case "mostrar": 
+                
+                id = Integer.parseInt(request.getParameter("id")); 
+                
+                request.setAttribute("id",id); 
+                
+                RequestDispatcher mostrar = request.getRequestDispatcher("externo/mostrarLancamentos.jsp"); 
+                mostrar.forward(request, response);
+                
+                
+            
+            break;
+                
 
             case "excluir":
                 id = Integer.parseInt(request.getParameter("id"));
