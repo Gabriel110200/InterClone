@@ -89,13 +89,13 @@ public class LancamentoDao extends HttpServlet {
             Statement stmt = conexao.createStatement();
 
             ResultSet rs = stmt.executeQuery(sql); 
-            Lancamento lancamento = new Lancamento(); 
+          
             
               
               
             while (rs.next()) {
                     
-               
+                       Lancamento lancamento = new Lancamento(); 
                        lancamento.setId( rs.getInt("id"));
                        lancamento.setId_conta( rs.getInt("id_conta")); 
                        lancamento.setId_categoria( rs.getInt("id_categoria"));
