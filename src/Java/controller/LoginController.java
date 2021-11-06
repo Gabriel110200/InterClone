@@ -5,6 +5,7 @@
  */
 package controller;
 
+import aplicacao.Administrador;
 import aplicacao.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,9 +40,15 @@ public class LoginController extends HttpServlet {
         AdministradoresDao admDao = new AdministradoresDao();  
         ConexaoDao usuarioDao = new ConexaoDao();
         
-        if(admDao.validarLogin(cpf, senha)){
+        if(admDao.validarLogin(cpf, senha)!=0){
+            id = admDao.validarLogin(cpf, senha); 
+            Administrador adm = new Administrador();  
+            adm = admDao.getAdmnPorId(id);
             
-            RequestDispatcher rd = request.getRequestDispatcher("interno/index.html"); 
+            
+            HttpSession session = request.getSession(); 
+            session.setAttribute("adm", adm);
+            RequestDispatcher rd = request.getRequestDispatcher("interno/index.jsp"); 
             rd.forward(request, response);
             
             

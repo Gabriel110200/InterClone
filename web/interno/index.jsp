@@ -9,10 +9,11 @@
 
         <title>Dashboard</title>
     </head>
-    <body>
+    <body> 
+        <%@include file="sidebar.jsp" %>
         <div class="dashboard">
             <div class="dashboard-container">
-                <h1>Acesso administrativo</h1>
+                <h1>Bem vindo:<%= adm.getNome() %>!<br /> Acesso administrativo</h1>
 
                 <div class="buttons-container">
                     <div class="row">
@@ -20,7 +21,7 @@
                             <button class="dashboard-button" id="newAdm">Cadastrar Admins</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" id="newUser" >Cadastrar Usu√°rios</button>
+                            <button class="dashboard-button" id="newUser" >Cadastrar Usu·rios</button>
                         </div>
                         <div class="col-4">
                             <button class="dashboard-button" id="newCategory">Cadastrar Categorias</button>
@@ -31,14 +32,14 @@
                             <button class="dashboard-button" id="showAdmin">Listar Admins</button>
                         </div>
                         <div class="col-4">
-                            <button class="dashboard-button" id="showUser" >Listar Usu√°rios</button>
+                            <button class="dashboard-button" id="showUser" >Listar Usu·rios</button>
                         </div>
                         <div class="col-4">
                             <button class="dashboard-button" id="showCategoria">Listar Categorias</button>
                         </div>
                     </div>
                 </div>
-                <a href="/InterClone">Voltar para a p√°gina Iniciall</a>
+                <a href="/InterClone">Voltar para a p·gina Iniciall</a>
             </div>
         </div>
 

@@ -40,7 +40,7 @@ public class LancamentoController extends HttpServlet {
 
         switch (acao) {
 
-            case "inserir":
+            case "incluir":
 
                 lancamento.setId(0);  
                 lancamento.setValor(0); 
@@ -57,7 +57,7 @@ public class LancamentoController extends HttpServlet {
             case "editar":
 
                 id = Integer.parseInt(request.getParameter("id"));
-       //         lancamento = lancamentoDao.getLancamentoPorId(id);
+                lancamento = lancamentoDao.getLancamentoPorId(id);
                 request.setAttribute("lancamento", lancamento);
 
                 RequestDispatcher editar = request.getRequestDispatcher("/externo/cadastroLancamento.jsp");
@@ -125,7 +125,7 @@ public class LancamentoController extends HttpServlet {
          
          lancamentoDao.inserir(lancamento); ;
          
-         RequestDispatcher sucesso = request.getRequestDispatcher("externo/sucesso.html");
+         RequestDispatcher sucesso = request.getRequestDispatcher("externo/sucesso.jsp");
          sucesso.forward(request, response);
      } catch (Exception ex) {
          Logger.getLogger(LancamentoController.class.getName()).log(Level.SEVERE, null, ex);

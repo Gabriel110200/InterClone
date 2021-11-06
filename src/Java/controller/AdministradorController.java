@@ -86,7 +86,7 @@ public class AdministradorController extends HttpServlet {
 
         admDao.inserir(adm);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/interno/sucesso.html");
+        RequestDispatcher rd = request.getRequestDispatcher("/interno/sucesso.jsp");
         rd.forward(request, response);
 
     }

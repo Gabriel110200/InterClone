@@ -4,14 +4,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <base href="/InterClone/" target="_blank" />
+        <base href="/InterClone/" target="_self" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
         <title>Cadastro</title>
     </head>
     <body> 
-        
+        <%@include file="sidebar.jsp" %>
         <% Categoria categoria = (Categoria) request.getAttribute("categoria");%>
         
         <div class="form-container">
@@ -44,7 +44,7 @@
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script>
-           /* $(document).ready(function () {
+            $(document).ready(function () {
                 $('#category-form').validate({
                     errorPlacement: function (label, element) {
                         label.addClass('error-msg text-danger');
@@ -57,14 +57,12 @@
                             maxlength: 20,
                         },
                     },
-                    submitHandler: function (form) {
-                        alert('Cadastro da categoria ' + $(form).find('input[name="description"]').val() + ' realizado');
-                    },
+                   
                 });
 
                 $('.cpf').mask('000.000.000-00', {reverse: true});
                 $('#btnCancel').click(() => (document.location.href = 'interno'));
-            }); */
+            }); 
         </script>
     </body>
 </html>

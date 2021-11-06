@@ -39,10 +39,10 @@ public class AdministradoresDao extends HttpServlet {
         }
     }  
     
-    public boolean validarLogin(String cpf,String senha){
+    public int validarLogin(String cpf,String senha){
         
         String sql  = "SELECT * FROM administradores"; 
-        boolean value = false;
+        int value = 0;
         
         try { 
             
@@ -58,7 +58,8 @@ public class AdministradoresDao extends HttpServlet {
               
               if(cpf_table.equals(cpf) && senha_table.equals(senha)){
                   
-                  value = true;
+                  value = Integer.parseInt(rs.getString("id")); 
+                  
                   
               }
                 

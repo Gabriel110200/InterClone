@@ -4,15 +4,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<base href="/InterClone/" target="_blank" />
+		<base href="/InterClone/" target="_self" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 
 		<title>Cadastro</title>
 	</head>
 	<body> 
-            
-            <% Administrador adm = (Administrador) request.getAttribute("adm"); %>
+            <%@include file="sidebar.jsp" %>
+            <% Administrador admin = (Administrador) request.getAttribute("adm"); %>
 		<div class="form-container">
 			<form id="form" class="main-form" method="POST" action="AdministradorController">
 				<h2 class="text-center mb-2">Cadastrar Administrador</h2>
@@ -21,19 +21,19 @@
 					<img src="images/icons/close.png" alt="Cancelar" title="Cancelar" />
 				</div> 
                                 
-                                <input type="hidden" value="<%= adm.getId() %>" name="id" />
+                                <input type="hidden" value="<%= admin.getId() %>" name="id" />
 
 				<div class="row mb-3 mt-4">
 					<div class="col-5">
 						<div class="form-group">
 							<label for="cpf">CPF:</label>
-							<input type="text" class="cpf form-control" value="<%= adm.getCpf() %>" name="cpf" id="cpf" placeholder="000.000.000-00" />
+							<input type="text" class="cpf form-control" value="<%= admin.getCpf() %>" name="cpf" id="cpf" placeholder="000.000.000-00" />
 						</div>
 					</div>
 					<div class="col">
 						<div class="form-group">
 							<label for="name">Nome:</label>
-							<input type="text" class="form-control" value="<%=adm.getNome() %>" name="nome" id="name" maxlength="20" />
+							<input type="text" class="form-control" value="<%=admin.getNome() %>" name="nome" id="name" maxlength="20" />
 						</div>
 					</div>
 				</div>
@@ -41,13 +41,13 @@
 					<div class="col">
 						<div class="form-group">
 							<label for="password">Senha:</label>
-                                                        <input type="password" class="form-control" value="<%=adm.getSenha() %>" name="senha" id="password" />
+                                                        <input type="password" class="form-control" value="<%=admin.getSenha() %>" name="senha" id="password" />
 						</div>
 					</div>
 					<div class="col">
 						<div class="form-group">
 							<label for="confirmPassword">Confirmar senha:</label>
-                                                        <input type="password" class="form-control" value="<%=adm.getSenha() %>" name="confirmarSenha" id="confirmPassword" />
+                                                        <input type="password" class="form-control" value="<%=admin.getSenha() %>" name="confirmarSenha" id="confirmPassword" />
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 		<script src="js/localization/messages_pt_BR.js"></script>
 
 		<script>
-		/*	$(document).ready(function () {
+			$(document).ready(function () {
 				$('#form').validate({
 					errorPlacement: function (label, element) {
 						label.addClass('error-msg text-danger');
@@ -89,9 +89,7 @@
 							equalTo: '#password',
 						},
 					},
-					submitHandler: function (form) {
-						alert('Cadastro do ' + $(form).find('input[name="name"]').val() + ' realizado');
-					},
+					
 				});
 
 				$('.cpf').mask('000.000.000-00', { reverse: true });

@@ -104,7 +104,7 @@ public class ContaController extends HttpServlet {
         
         contaDao.inserir_conta(conta); 
         
-        RequestDispatcher sucesso = request.getRequestDispatcher("externo/sucesso.html"); 
+        RequestDispatcher sucesso = request.getRequestDispatcher("externo/sucesso.jsp"); 
         sucesso.forward(request, response);
       
     }

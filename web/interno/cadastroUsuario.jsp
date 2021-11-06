@@ -4,14 +4,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <base href="/InterClone/" target="_blank" />
+        <base href="/InterClone/" target="_self" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
         <title>Cadastro</title>
     </head> 
              <% Usuario usuario = ( Usuario ) request.getAttribute("usuario"); %>
-    <body>
+    <body> 
+        <%@include file="sidebar.jsp" %>
         <div class="form-container">
             <form id="form" class="main-form" method="POST" action="UsuarioController">
                 <h2 class="text-center mb-2">Cadastrar Usuário</h2>
@@ -71,7 +72,7 @@
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script> 
-            /*
+            
             $(document).ready(function () {
                 $('#form').validate({
                     errorPlacement: function (label, element) {
@@ -97,14 +98,15 @@
                             equalTo: '#password',
                         },
                     },
-                    submitHandler: function (form) {
-                        alert('Cadastro do ' + $(form).find('input[name="name"]').val() + ' realizado');
-                    },
+                   /* submitHandler: function (form) {
+                       
+                        $("form").submit();
+                    }, */
                 });
 
                 $('.cpf').mask('000.000.000-00', {reverse: true});
                 $('#btnCancel').click(() => (document.location.href = 'interno'));
-            }); */
+            }); 
         </script>
     </body>
 </html>

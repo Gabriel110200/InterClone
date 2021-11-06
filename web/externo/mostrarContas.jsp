@@ -9,12 +9,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>  
-        <base href="/InterClone/" target="_blank" />
+        <base href="/InterClone/" target="_self" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
     </head>
     <body> 
-
+        <%@include file="sidebar.jsp" %>
         <div class="container pt-3">
             <table class="table"> 
 
@@ -32,7 +32,7 @@
                 <tbody>
                 <h1>Alterar dados da conta</h1>
                 <%
-                    Usuario usuario = (Usuario) session.getAttribute("usuario");
+             
                     ContaDao contaDao = new ContaDao();
 
                     ArrayList<Conta> conta_lista = contaDao.mostrar(usuario.getId());

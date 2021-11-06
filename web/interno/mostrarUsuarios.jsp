@@ -17,7 +17,8 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
     </head>
-    <body> 
+    <body>  
+        <%@include file="sidebar.jsp" %>
         <div class="container pt-3">
             <table class="table"> 
 
@@ -48,8 +49,8 @@
                         <td><%= usuario.getCpf()%></td> 
                         <td><%= usuario.getNome()%></td> 
                         <td><%= usuario.getSenha()%></td>
-                        <td> <a class="btn btn-success" href="UsuarioController?acao=editar&id=<%= usuario.getId() %>">Editar</a>   
-                            <a class="btn btn-danger" href="UsuarioController?acao=excluir&id=<%= usuario.getId() %>"> Excluir</a></td>
+                        <td> <a class="btn btn-success" href="UsuarioController?acao=editar&id=<%= usuario.getId() %>" target="_self">Editar</a>   
+                            <a class="btn btn-danger" href="UsuarioController?acao=excluir&id=<%= usuario.getId() %>" target="_self"> Excluir</a></td>
                     </tr>
                     <% }%>
                 </tbody>

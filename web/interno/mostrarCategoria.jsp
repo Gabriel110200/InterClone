@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
     </head>
-    <body> 
+    <body>  
+        <%@include file="sidebar.jsp" %>
         <div class="container pt-3">
             <table class="table"> 
 
@@ -44,8 +45,8 @@
                         <td><%= categoria.getId()%></td>
                         <td><%= categoria.getDescricao() %></td> 
                        
-                        <td> <a class="btn btn-success" href="CategoriaController?acao=editar&id=<%= categoria.getId() %>">Editar</a>   
-                            <a class="btn btn-danger" href="CategoriaController?acao=excluir&id=<%= categoria.getId() %>"> Excluir</a></td>
+                        <td> <a class="btn btn-success" href="CategoriaController?acao=editar&id=<%= categoria.getId() %>" target="_self">Editar</a>   
+                            <a class="btn btn-danger" href="CategoriaController?acao=excluir&id=<%= categoria.getId() %>" target="_self"> Excluir</a></td>
                     </tr>
                     <% } %>
                 </tbody>

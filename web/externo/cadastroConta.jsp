@@ -4,13 +4,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <base href="/InterClone/" target="_blank" />
+        <base href="/InterClone/" target="_self" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
         <title>Cadastro</title>
     </head>
-    <body> 
+    <body>  
+        
+        <%@include file="sidebar.jsp" %>
         
         <%Conta conta = (Conta) request.getAttribute("conta"); %>
         
@@ -73,7 +75,7 @@
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script>
-          /*  $(document).ready(function () {
+            $(document).ready(function () {
                 $('#form').validate({
                     errorPlacement: function (label, element) {
                         label.addClass('error-msg text-danger');
@@ -98,9 +100,7 @@
                             maxlength: 6,
                         },
                     },
-                    submitHandler: function (form) {
-                        alert('Cadastro da conta-corrente ' + $(form).find('input[name="name"]').val() + ' realizado');
-                    },
+                   
                 });
 
                 $('#bank').mask('000');

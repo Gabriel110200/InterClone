@@ -1,9 +1,5 @@
-<%-- 
-    Document   : sidebar
-    Created on : 03/11/2021, 22:18:51
-    Author     : T-Gamer
---%>
 
+<%@page import="aplicacao.Administrador"%>
 <%@page import="aplicacao.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,16 +112,19 @@
     <body>
         <div class="sidebar">  
             
-            <% Usuario usuario  = (Usuario) session.getAttribute("usuario"); %>
+            <% Administrador adm  = (Administrador) session.getAttribute("adm"); %>
             
             <h1><span style="color: rgb(0, 150, 219)">Inter</span>clone</h1>
             
             <ul>
-                <li><a href="externo/index.jsp">Home </a></li> 
-                <li><a href="ContaController?acao=inserir">Cadastrar Contas </a></li>  
-                <li><a href="externo/mostrarContas.jsp">Mostrar Contas </a></li>
-                <li><a href="LancamentoController?acao=incluir">Cadastrar Lançamentos</a></li>
-                <li><a href="index.html">Sair</a></li>
+                <li><a href="interno/index.jsp" target="_self">Home </a></li> 
+                <li><a href="UsuarioController?acao=inserir" target="_self">Cadastrar Usuários </a></li>  
+                <li><a href="interno/mostrarUsuarios.jsp" target="_self">Mostrar Usuários </a></li>
+                <li><a href="AdministradorController?acao=inserir" target="_self">Cadastrar Administrador</a></li>   
+                <li><a href="interno/mostrarAdmin.jsp" target="_self">Mostrar Administrador</a></li>    
+                <li><a href="CategoriaController?acao=inserir" target="_self">Cadastrar Categoria</a></li>   
+                <li><a href="interno/mostrarCategoria.jsp" target="_self">Mostrar Categoria</a></li> 
+                <li><a href="index.html" target="_self">Sair</a></li>
                
                 
             </ul> 
@@ -160,3 +159,4 @@
         
     </body>
 </html>
+

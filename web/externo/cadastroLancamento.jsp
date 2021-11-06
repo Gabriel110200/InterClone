@@ -9,14 +9,16 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <base href="/InterClone/" target="_blank" />
+        <base href="/InterClone/" target="_self" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
         <title>Cadastro</title>
     </head>
-    <body>
-        <div class="form-container"> 
+    <body> 
+        <%@include file="sidebar.jsp" %>
+        <div class="form-container">  
+            
             
             <% Lancamento lancamento = (Lancamento)  request.getAttribute("lancamento"); %>
             <form id="form" class="main-form" method="POST" action="LancamentoController">
@@ -32,7 +34,7 @@
                     ContaDao contadao = new ContaDao();  
                     CategoriaDao categoriadao = new CategoriaDao();
 
-                   ArrayList<Conta> conta_list = contadao.mostrar(); 
+                   ArrayList<Conta> conta_list = contadao.mostrar(usuario.getId()); 
                    ArrayList<Categoria> categoria_list = categoriadao.mostrar();
 
                 %>
@@ -108,7 +110,7 @@
         <script src="js/localization/messages_pt_BR.js"></script>
 
         <script>
-          /*  $(document).ready(function () {
+            $(document).ready(function () {
                 $('#form').validate({
                     errorPlacement: function (label, element) {
                         label.addClass('error-msg text-danger');
@@ -136,9 +138,7 @@
                             maxlength: 100,
                         },
                     },
-                    submitHandler: function (form) {
-                        alert('Cadastro do lançamento realizado');
-                    },
+                  
                 });
 
                 $('#value').mask('0.000.000.000,00', {reverse: true});

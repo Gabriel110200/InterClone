@@ -1,26 +1,34 @@
-<%@page import="aplicacao.Usuario"%>
+<%@page import="aplicacao.Usuario"%> 
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <base href="/InterClone/" target="_blank" />
+        <base href="/InterClone/" target="_self" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
 
         <title>Dashboard</title>
-    </head>
-    <body> 
+    </head>  
+    
+    <body>  
+        <%@include file="sidebar.jsp" %>
         <% Object logado = session.getAttribute("logado");
-            Usuario usuario = (Usuario) session.getAttribute("usuario");
+           /* Usuario usuario = (Usuario) session.getAttribute("usuario"); */
             String nome = "";
             if (logado != null) {
                 nome = usuario.getNome();
             }
-
-        %>
-        <div class="dashboard">
-            <div class="dashboard-container">
+            
+        %> 
+        
+       
+     
+        <div class="dashboard">  
+            
+            <div class="dashboard-container"> 
+                 <h2>Bem vindo ao painel do usuário. Clique nos botões abaixo ou acesse o botão ao topo esquerdo da tela. </h2>
               <h1>Bem-vindo: <span class="h2"><%= nome%></span>!</h1> 
 
                 <div class="buttons-container">

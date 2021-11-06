@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" />
     </head>
     <body> 
-
+        <%@include file="sidebar.jsp" %>
         <div class="container pt-3">
             <table class="table"> 
 
@@ -36,21 +36,21 @@
 
                     <%  AdministradoresDao admDao = new AdministradoresDao();
                         ArrayList<Administrador> adm_lista = admDao.mostrar();
-                        Administrador adm = new Administrador();
+                        Administrador admin = new Administrador();
 
                         for (int i = 0; i < adm_lista.size(); i++) {
-                            adm = adm_lista.get(i);
+                            admin = adm_lista.get(i);
                     %>
 
 
                     <tr>
 
-                        <td><%= adm.getId()%></td>
-                        <td><%= adm.getCpf()%></td> 
-                        <td><%= adm.getNome()%></td> 
-                        <td><%= adm.getSenha()%></td>
-                        <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= adm.getId()%>" target="_self">Editar</a>   
-                            <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= adm.getId()%>" target="_self"> Excluir</a></td>
+                        <td><%= admin.getId()%></td>
+                        <td><%= admin.getCpf()%></td> 
+                        <td><%= admin.getNome()%></td> 
+                        <td><%= admin.getSenha()%></td>
+                        <td> <a class="btn btn-success" href="AdministradorController?acao=editar&id=<%= admin.getId()%>" target="_self">Editar</a>   
+                            <a class="btn btn-danger" href="AdministradorController?acao=excluir&id=<%= admin.getId()%>" target="_self"> Excluir</a></td>
                     </tr>
                     <% }%>
                 </tbody>
