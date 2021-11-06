@@ -17,7 +17,7 @@
         <div class="container pt-3">
             <table class="table"> 
 
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th scope="col">id</th> 
                         <th scope="col">id_conta</th>
