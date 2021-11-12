@@ -1,7 +1,7 @@
 # Banco InterClone
- Um sistema bancario onde é possível acessar o sistema como administrador e cadastrar outros administradores e usuários no banco de dados. 
+ Um sistema bancario feito em Java no padrão MVC. 
 
-# Funcionalidades: 
+# Funcionalidades:   
 
 RF1: O administrador acessa a área privada da aplicação por meio de login.<br />
 RF2: O administrador cadastra os usuários no sistema. <br />
