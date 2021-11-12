@@ -3,8 +3,8 @@
 
 # Funcionalidades: 
 
-RF1: O administrador acessa a área privada da aplicação por meio de login.
-RF2: O administrador cadastra os usuários no sistema.
+RF1: O administrador acessa a área privada da aplicação por meio de login.<br />
+RF2: O administrador cadastra os usuários no sistema. <br />
 RF3: O administrador cadastra os administradores no sistema.
 RF4: O administrador pode suspender o acesso do usuário ao sistema.
 RF5: O administrador cadastra a categoria no sistema.
