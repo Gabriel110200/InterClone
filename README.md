@@ -1,5 +1,5 @@
 # Banco InterClone
- Um sistema bancario feito em Java no padrão MVC. 
+ Um sistema bancario feito em Java no padrão MVC. Tecnologias usadas: (HTML5,CSS3,Bootstrap,Javascript,Jquery,Java,Mysql)
 
 # Funcionalidades:   
 
