@@ -14,6 +14,5 @@ RF6: O usuário acessa a área privada da aplicação por meio de login.<br />
 RF7: O usuário cadastra sua conta corrente no sistema.<br /> 
 RF8: O usuário cadastra seus lançamentos (crédito e débito) na conta corrente.<br />
 RF9: O usuário recebe alerta quando a conta está em negativo;<br />
-2 de 4
 RF10: O usuário obtém balancete da conta corrente (somatório de gastos por todas<br />
 as categorias e os percentuais);
